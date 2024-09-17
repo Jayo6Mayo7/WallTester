@@ -1,117 +1,22 @@
 fun main() {
     //w is short for wall
-    val position = mutableListOf(0, 0)
+    println("Enter board length: ")
+    val size = readln()
+    val sizeInt = size.toInt()
+    val position = mutableListOf(1, 1)
     println("Use WASD to move")
     print("Your location: ")
     print(position)
-    println()
     var wUp: Boolean
     var wRight: Boolean
     var wDown: Boolean
     var wLeft: Boolean
     var ranIntoWall = false
-    fun wCheck(x: Int, y: Int) {
-        when (x) {
-            -2 -> when (y) {
-                2 -> {
-                    wUp = true
-                    wLeft = true
-                }
-
-                1 -> {
-                    wLeft = true
-                    wRight = true
-                }
-
-                0 -> {
-                    wLeft = true
-                }
-
-                -1 -> {
-                    wLeft = true
-                }
-
-                -2 -> {
-                    wLeft = true
-                    wDown = true
-                    wRight = true
-                }
-            }
-
-            -1 -> when (y) {
-                2 -> {
-                    wUp = true
-                    wDown = true
-                }
-
-                0 -> {
-                    wUp = true
-                }
-
-                -1 -> {
-                    wDown = true
-                }
-            }
-
-            0 -> when (y) {
-                2 -> {
-                    wUp = true
-                }
-
-                1 -> {
-                    wLeft = true
-                    wRight = true
-                }
-                //0 -> no walls
-                -1 -> {
-                    wDown = true
-                }
-            }
-
-            1 -> when (y) {
-                2 -> {
-                    wUp = true
-                }
-
-                1 -> {
-                    wLeft = true
-                }
-                //0 -> no walls
-                -1 -> {
-                    wDown = true
-                }
-
-                -2 -> {
-                    wUp = true
-                    wDown = true
-                    wLeft = true
-                }
-            }
-
-            2 -> when (y) {
-                2 -> {
-                    wUp = true
-                    wRight = true
-                }
-
-                1 -> {
-                    wRight = true
-                }
-
-                0 -> {
-                    wRight = true
-                }
-
-                -1 -> {
-                    wRight = true
-                }
-
-                -2 -> {
-                    wRight = true
-                    wDown = true
-                }
-            }
-        }
+    fun wCheck(x: Any, y: Any) {
+        if (x==1) {wLeft = true}
+        if (x==sizeInt) {wRight = true}
+        if (y==1) {wDown = true}
+        if (y==sizeInt) {wUp = true}
     }
     while (true) {
         val move = readlnOrNull()
